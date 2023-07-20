@@ -16,7 +16,6 @@ const Navbar = (props) => {
             props.history.push("/")
             localStorage.removeItem("token")
         }
-
     }
 
     return (

@@ -27,7 +27,7 @@ export const startRegisterUser = (formData, props)=>{
             //// --Error Handlings --
             if(user.data._message){
                 Swal.fire({
-                    icon: 'error',
+                    icon: 'error',  
                     title: 'Oops...',
                     text: `${user.data._message}`,
                   })

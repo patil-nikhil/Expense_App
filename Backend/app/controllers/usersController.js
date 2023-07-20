@@ -35,7 +35,6 @@ usersController.login = async (req, res) => {
             if (match) {
                 const tokenData = {
                     id: userObj._id,
-                    name: userObj.profile.username,
                     budget: userObj.budget
                 }
                 const token = jwt.sign(tokenData, process.env.JWT_SECRET)

@@ -12,7 +12,6 @@ const ExpensesList = (props) => {
     const [toggleEdit, setToggleEdit] = useState(false)
     const [editInfo, setEditInfo] = useState({})
     const [modal, setModal] = useState(false);
-    const [pageItems, setPageItems] = useState(5)
 
     const dispatch = useDispatch()
 
@@ -59,20 +58,6 @@ const ExpensesList = (props) => {
         })
     }
 
-    ////  Pagination items Functionality  ------------------
-    const addPagination = () => {
-        if (pageItems < expenses.length) {
-            setPageItems(pageItems + 3)
-        }
-    }
-    const lowPagination = () => {
-        if (pageItems > 3) {
-            setPageItems(pageItems - 3)
-        }
-
-    }
-
-
     ////  Find Category Name
 
     const findCategoryName = (id)=>{
@@ -108,43 +93,20 @@ const ExpensesList = (props) => {
                     </thead>
                     <tbody>
                         {
-                            expenses &&
-                            expenses.slice(0, pageItems).map(ele => {
+                            expenses.length !== 0 &&
+                            expenses.map(ele => {
                                 return <tr key={ele._id}>
                                     <td>{ele.note}</td>
                                     <td>{findCategoryName(ele.categoryId)}</td>
                                     <td>{ele.amount}</td>
                                     <td>{ele.date.split("T")[0]}</td>
-                                    <td><button className="btn btn-secondary btn-sm"
-                                        onClick={() => { handleExpenseEdit(ele) }}
-                                    ><img width="18" height="15" src="https://img.icons8.com/wired/64/edit.png" alt="edit" /></button></td>
-                                    <td><button className="btn btn-danger btn-sm"
-                                        onClick={() => { handleRemoveExpense(ele._id) }}
-                                    ><img width="18" height="18" src="https://img.icons8.com/glyph-neue/64/trash.png" alt="trash" /></button></td>
+                                    <td><button className="btn btn-secondary btn-sm" onClick={() => { handleExpenseEdit(ele) }}> Edit </button></td>
+                                    <td><button className="btn btn-danger btn-sm" onClick={() => { handleRemoveExpense(ele._id) }}> Remove </button></td>
                                 </tr>
                             })
                         }
                     </tbody>
                 </table>
-                <div className="row">
-                    {
-                        pageItems < expenses.length && <div className="col-md-4">
-                            <button className="btn btn-link" onClick={addPagination}>
-                                Next...
-                            </button>
-                        </div>
-                    }
-
-                    {
-                        pageItems > 3 && <div className="col-md-8" onClick={lowPagination}>
-                            <button className="btn btn-link" style={{ float: "right" }}>
-                                Previous
-                            </button>
-                        </div>
-                    }
-
-                </div>
-
             </div>
         </div>
     )

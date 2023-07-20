@@ -9,7 +9,6 @@ const DeletedExpenses = (props) => {
 
     const dispatch = useDispatch()
 
-
     const handleUndoExpense = (id) => {
         dispatch(startUndoUserExpense(id))
     }

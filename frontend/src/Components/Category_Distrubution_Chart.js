@@ -46,7 +46,7 @@ const CategoryDistChart = (props) => {
 
     return (
         <div>
-            <h1 className="badge bg-primary text-wrap fs-6">CATEGORYWISE DISTRUBUTION</h1>
+            <h1 className="badge bg-secondary text-wrap fs-6">CATEGORYWISE DISTRUBUTION</h1>
             <Bar
                 data={data}
                 options={options}

@@ -28,7 +28,7 @@ const BudgetusageChart = (props) => {
 
   return (
     <div className="">
-      <h1 className="text text-uppercase badge bg-primary text-wrap fs-6">Budget Usage</h1>
+      <h1 className="text text-uppercase badge bg-secondary text-wrap fs-6">Budget Usage</h1>
       <Pie data={data} />
     </div>
 

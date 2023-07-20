@@ -87,7 +87,7 @@ const ExpenseForm = (props) => {
                         <select id="category" value={categoryId} onChange={(e) => { setCategoryId(e.target.value) }} className="form-select">
                             <option value="">Select the Category</option>
                             {
-                                categories &&
+                                categories.length !== 0 &&
                                 categories.map(ele => {
                                     return <option value={ele._id} key={ele._id}>{ele.title}</option>
                                 })
@@ -105,11 +105,11 @@ const ExpenseForm = (props) => {
                             !remainingBudget.hasOwnProperty("error") ?
                                 <div>
                                     <span style={{ color: "green" }}>{remainingBudget.message}</span><br />
-                                    <input type="submit" className="btn btn-primary my-2" />
+                                    <input type="submit" />
                                 </div> :
                                 <div>
                                     <span style={{ color: "red" }}>{remainingBudget.error}</span><br />
-                                    <input type="submit" className="btn btn-outline-danger my-2" disabled />
+                                    <input type="submit" disabled />
                                 </div>
                         }
 
